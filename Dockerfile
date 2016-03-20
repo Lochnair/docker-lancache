@@ -13,3 +13,5 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 ADD lancache/nginx.conf /etc/nginx/nginx.conf
 ADD lancache/lancache/ /etc/nginx/lancache
 ADD lancache/sites/ /etc/nginx/sites/
+
+CMD ["nginx", "-g", "daemon off;"]
