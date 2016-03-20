@@ -10,6 +10,6 @@ VOLUME /cache
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
-ADD nginx.conf /etc/nginx/nginx.conf
+ADD lancache/nginx.conf /etc/nginx/nginx.conf
 ADD lancache/lancache/ /etc/nginx/lancache
 ADD lancache/sites/ /etc/nginx/sites/
