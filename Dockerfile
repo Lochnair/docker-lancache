@@ -1,4 +1,4 @@
-FROM nginx:1.9
+FROM nginx:mainline-alpine
 
 RUN mkdir -p /var/lancache/installs && \
     mkdir -p /var/lancache/other && \
