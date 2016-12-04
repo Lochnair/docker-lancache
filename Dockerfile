@@ -1,10 +1,10 @@
 FROM nginx:1.9
 
-RUN mkdir -p /cache/installs && \
-    mkdir -p /cache/other && \
-    mkdir -p /cache/tmp
+RUN mkdir -p /var/lancache/installs && \
+    mkdir -p /var/lancache/other && \
+    mkdir -p /var/lancache/tmp
 
-VOLUME /cache
+VOLUME /var/lancache
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
