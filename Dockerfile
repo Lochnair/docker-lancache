@@ -1,6 +1,7 @@
 FROM nginx:mainline-alpine
 
 RUN mkdir -p /var/lancache/installs && \
+    mkdir -p /var/lancache/logs && \
     mkdir -p /var/lancache/other && \
     mkdir -p /var/lancache/tmp
 
