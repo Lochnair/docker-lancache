@@ -1,5 +1,12 @@
 FROM nginx:mainline-alpine
 
+RUN apk add \
+    --no-cache \
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
+    --update \
+    shadow \
+    su-exec
+
 RUN mkdir -p /var/lancache/installs && \
     mkdir -p /var/lancache/logs && \
     mkdir -p /var/lancache/other && \
@@ -15,4 +22,10 @@ ADD lancache/nginx.conf /etc/nginx/nginx.conf
 ADD lancache/lancache/ /etc/nginx/lancache
 ADD lancache/sites/ /etc/nginx/sites/
 
+RUN sed -i 's|user www-data www-data;|user nginx nginx;|g' /etc/nginx/nginx.conf
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
